@@ -1,0 +1,5 @@
+<li>
+  <%= f.hidden_field :zoneable_type, :value => "ZipCodeRange" %>
+  <%= f.collection_select(:zoneable_id, @zip_code_ranges, :id, :name, :include_blank => true) %>
+  <%= remove_nested f %>
+</li>

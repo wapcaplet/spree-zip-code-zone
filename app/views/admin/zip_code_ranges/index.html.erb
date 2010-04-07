@@ -1,0 +1,34 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t('zip_code_ranges') %></h1>
+
+<table class="index">
+  <thead>
+    <tr>
+      <th><%= t('start_zip') %></th>
+      <th><%= t('end_zip') %></th>
+      <th><%= t('action') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @zip_code_ranges.each do |range| %>
+      <tr>
+        <td><%= range.start_zip %></td>
+        <td><%= range.end_zip %></td>
+        <td class="actions">
+          <%= link_to_with_icon 'edit', t('edit'), edit_admin_zip_code_range_url(range) %>
+          &nbsp;
+          <%= link_to_with_icon 'delete', t('delete'), object_url(range), :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @zip_code_ranges.empty? %>
+      <tr><td colspan="3"><%= t('none') %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= button_link_to t('new_zip_code_range'), new_admin_zip_code_range_url, :icon => 'add' %>
+</p>
+

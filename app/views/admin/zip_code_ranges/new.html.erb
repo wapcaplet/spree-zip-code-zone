@@ -1,0 +1,11 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t('new_zip_code_range') %></h1>
+
+<%= error_messages_for :zip_code_range %>
+
+<% form_for(:zip_code_range, :url => collection_url) do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= render :partial => 'admin/shared/new_resource_links' %>
+<% end %>
+
