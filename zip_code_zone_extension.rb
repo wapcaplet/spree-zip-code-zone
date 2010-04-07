@@ -4,7 +4,7 @@
 class ZipCodeZoneExtension < Spree::Extension
   version "1.0"
   description "Zones for U.S. ZIP Codes"
-  url "http://yourwebsite.com/zip_code_zone"
+  url "http://github.com/wapcaplet/spree-zip-code-zone"
 
   def activate
 
