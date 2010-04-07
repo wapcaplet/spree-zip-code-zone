@@ -8,7 +8,8 @@ class ZipCodeZoneExtension < Spree::Extension
 
   def activate
 
-    # Override Zone methods to support ZipCode zone members
+    # This is mostly copied from the Spree 0.10.2 Zone methods,
+    # with added support for ZipCodeRange zone members
     Zone.class_eval do
 
       def kind
@@ -22,6 +23,8 @@ class ZipCodeZoneExtension < Spree::Extension
         end
       end
 
+      # Check for whether an address.zipcode is
+      # between the start/end of a ZipCodeRange
       def include?(address)
         return false unless address
 
@@ -34,7 +37,7 @@ class ZipCodeZoneExtension < Spree::Extension
           when "State"
             zone_member.zoneable == address.state
           when "ZipCodeRange"
-            address.zipcode.between?(
+            address.zipcode and address.zipcode.between?(
               zone_member.zoneable.start_zip,
               zone_member.zoneable.end_zip)
           else
